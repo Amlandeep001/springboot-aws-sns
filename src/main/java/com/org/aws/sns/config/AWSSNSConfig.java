@@ -27,9 +27,10 @@ public class AWSSNSConfig
 	@Bean
 	AmazonSNSClient getSnsClient()
 	{
+		BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
 		return (AmazonSNSClient) AmazonSNSClientBuilder.standard()
 				.withRegion(Regions.AP_SOUTH_1)
-				.withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(accessKey, secretKey)))
+				.withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
 				.build();
 	}
 }
